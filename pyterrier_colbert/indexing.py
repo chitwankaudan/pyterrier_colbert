@@ -262,7 +262,8 @@ class ColBERTIndexer(IterDictIndexerBase):
         args.checkpoint = checkpoint
         args.bsize = 128
         args.collection = None
-        args.amp = False
+        # colvbert changes: changed amp to True
+        args.amp = True
         args.index_root = index_root
         args.index_name = index_name
         args.chunksize = chunksize
@@ -311,6 +312,7 @@ class ColBERTIndexer(IterDictIndexerBase):
                 docid+=1
                 yield l              
         self.args.generator = convert_gen(iterator)
+        print_message("args",self.args)
         ceg = CollectionEncoderIds(self.args,0,1) if self.ids else CollectionEncoder_Generator(self.args,0,1)
 
         create_directory(self.args.index_root)
