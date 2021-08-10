@@ -36,5 +36,5 @@ def load_checkpoint(path, model, optimizer=None, do_print=True):
         print_message("#> checkpoint['epoch'] =", checkpoint['epoch'])
         print_message("#> checkpoint['batch'] =", checkpoint['batch'])
 
-    print(checkpoint["arguments"])
+    print_message(checkpoint["arguments"])
     return checkpoint
